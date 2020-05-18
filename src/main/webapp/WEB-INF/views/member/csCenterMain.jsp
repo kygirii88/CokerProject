@@ -118,7 +118,7 @@
 		<br>
 		<h2 class="con-tit">Contact Us</h2>
 		<p>
-			Email : <a href="mailto:co0717gjs@naver.com">co0717gjs@naver.com</a>
+			Email : <a href="mailto:cokerhelp@gmail.com">cokerhelp@gmail.com</a>
 		</p>
 	</div>
 </section>

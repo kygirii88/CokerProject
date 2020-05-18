@@ -4,7 +4,7 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath }" />
 
-<p>&copy; Copyright 2020 by <a href="mailto:solyd132@naver.com">코커</a> All Rights Reserved.</p>
+<p>&copy; Copyright 2020 by <a href="mailto:cokerhelp@gmail.com">코커</a> All Rights Reserved.</p>
 <p>
 	<a href="https://blog.naver.com/co0717gjs">blog</a> 
 	 | <a href="${contextPath }/member/policy.do">이용약관</a> 
