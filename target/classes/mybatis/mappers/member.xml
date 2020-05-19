@@ -96,7 +96,7 @@
 </select>
 
 <!-- 계정 ID(이메일) 찾기 -->
-<select id="searchUserEmail" parameterType="java.util.Map" resultType="string">
+<select id="searchUserEmail" parameterType="java.util.Map" resultType="String">
 	<![CDATA[
 		select userEmail from c_member where userName = #{userName} and tel = #{tel}
 	]]>

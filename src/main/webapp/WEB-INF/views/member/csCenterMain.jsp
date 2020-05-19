@@ -92,31 +92,30 @@
 			</tbody>
 		</table>
 	</div>
-	
+
 	<hr class="divider">
 	
-	<div class="content-row-2">
-		<h2 class="con-tit">코딩커뮤니티 계정관리</h2>
-		<a href="${contextPath }/member/searchUserEmailForm.do">이곳에서 코커 계정을 찾으세요</a> <br>
-		<a href="${contextPath }/member/resetUserPwForm.do">이곳에서 코커 비밀번호를 찾으세요</a>
+	<div class="content-row-3">
+		<h2 class="con-tit">개발동기</h2>
+		<p>
+			&#09;코딩을 독학으로 공부할 때 구글링을 하다 보면 영어로 된 사이트나 문서들이 대부분입니다.
+			<br>다른 대형 커뮤니티 사이트 처럼 코딩에 관련된 대형 커뮤니티 사이트가 있으면 좋을것 같아 개발해 보았습니다. 
+			<br><br><b>COKER(코딩 커뮤니티)</b>는 프로그래밍 언어와 관련된 정보나 노하우 등을 공유하고, 
+			<br>유저들 간의 질문과 답변을 통해 구글링의 번거로움 및 언어장벽 문제를 해결할 수 있도록 돕는 커뮤니티 사이트입니다. 
+			<br><br>그 외에도 구인·구직이나 자유게시판 등 커뮤니티에 최적화된 서비스들이 준비되어 있습니다. 
+			<br><br>당신도 참여해보세요!
+		</p>
+		<div>&nbsp;</div>
+			<h2 class="con-tit">개발자</h2>
+		<p>
+			권용길 | 박경근 | 신동혁 | 임채헌(<a href="https://blog.naver.com/co0717gjs" target="_blank">개인 블로그 방문</a>)
+		</p>
 	</div>
 	
 	<hr class="divider">
 	
-	<div class="content-row-3">
-		<h2 class="con-tit">개발 동기</h2>
-		<p>	
-			코딩을 독학으로 공부할 때 구글링을 하다 보면 영어로 된 사이트나 문서들이 대부분입니다. COKER(코딩 커뮤니티)는
-			유저들 간 코딩에 관한 지식 공유나 정보, 자료 등을 공유하고 구글링에서 막히는 부분을 해결할 수 있도록 돕는 커뮤니티입니다. 그 외에도 구인 구직이나 자유게시판 등
-			커뮤니티에 최적화된 서비스들이 준비되어 있습니다. 당신도 참여하세요!
-		</p>
-		<br>
-			<h2 class="con-tit">개발자들</h2>
-		<p>
-			임채헌, 권용길, 신동혁, 박경근
-		</p>
-		<br>
-		<h2 class="con-tit">Contact Us</h2>
+	<div class="content-row-4">
+			<h2 class="con-tit">문의하기</h2>
 		<p>
 			Email : <a href="mailto:cokerhelp@gmail.com">cokerhelp@gmail.com</a>
 		</p>

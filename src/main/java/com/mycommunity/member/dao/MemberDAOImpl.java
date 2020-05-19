@@ -1,5 +1,7 @@
 package com.mycommunity.member.dao;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
@@ -98,9 +100,10 @@ public class MemberDAOImpl implements MemberDAO{
 
 	//회원계정 찾기
 	@Override
-	public String searchUserEmail(Map<String, Object> searchUserInfo) throws Exception {
-		String userEmail = sqlSession.selectOne("mapper.member.searchUserEmail", searchUserInfo);
-		return userEmail;
+	public List<String> searchUserEmail(Map<String, Object> searchUserInfo) throws Exception {
+		List<String> userEmailList = new ArrayList<String>();
+		userEmailList = sqlSession.selectList("mapper.member.searchUserEmail", searchUserInfo);
+		return userEmailList;
 	}
 	
 	//회원 비번 재설정

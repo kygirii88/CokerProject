@@ -494,9 +494,16 @@ public class MemberControllerImpl extends BaseController implements MemberContro
 		ModelAndView mav = new ModelAndView();
 		System.out.println("찾는 계정에 등록된 본명 : " + searchUserInfo.get("userName"));
 		System.out.println("찾는 계정에 등록된 휴대전화 번호 : " + searchUserInfo.get("tel"));
-		String userEmail = memberService.searchUserEmail(searchUserInfo);
-
-		mav.addObject("userEmail", userEmail);
+		List<String> userEmailList = memberService.searchUserEmail(searchUserInfo);
+		String message = null;
+		for(int i = 0; i < userEmailList.size(); i++) {
+			System.out.println("찾은계정 : " + userEmailList.get(i));			
+		}
+		if (userEmailList == null || userEmailList.isEmpty()) {
+			message = "입력한 정보와 일치하는 계정이 없습니다. 다시 입력해주세요.";
+			mav.addObject("message", message);
+		}
+		mav.addObject("userEmailList", userEmailList);
 		mav.setViewName("forward:/member/searchUserEmailForm.do");
 
 		return mav;

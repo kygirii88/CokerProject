@@ -1,5 +1,7 @@
 package com.mycommunity.member.service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -99,9 +101,10 @@ public class MemberServiceImpl implements MemberService{
 
 	//계정찾기
 	@Override
-	public String searchUserEmail(Map<String, Object> searchUserInfo) throws Exception {
-		String userEmail = memberDAO.searchUserEmail(searchUserInfo);
-		return userEmail;
+	public List<String> searchUserEmail(Map<String, Object> searchUserInfo) throws Exception {
+		List<String> userEmailList = new ArrayList<String>(); 
+		userEmailList = memberDAO.searchUserEmail(searchUserInfo);
+		return userEmailList;
 		
 	}
 	

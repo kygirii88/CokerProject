@@ -1,5 +1,6 @@
 package com.mycommunity.member.service;
 
+import java.util.List;
 import java.util.Map;
 
 import com.mycommunity.member.vo.MemberVO;
@@ -21,7 +22,7 @@ public interface MemberService {
 	
 	public String getNoticeTitle() throws Exception;
 	//회원계정 찾기
-	public String searchUserEmail(Map<String, Object> searchUserInfo) throws Exception;
+	public List<String> searchUserEmail(Map<String, Object> searchUserInfo) throws Exception;
 	//계정 비번 재설정
 	public int resetPw(Map<String, Object> resetPwInfo)throws Exception;
 	

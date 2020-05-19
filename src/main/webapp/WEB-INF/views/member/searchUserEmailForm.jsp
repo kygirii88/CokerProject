@@ -7,6 +7,18 @@
   request.setCharacterEncoding("UTF-8");
 %>  
 
+<c:if test='${not empty message }'>
+<script>
+window.onload=function()
+{
+  result();
+}
+
+function result(){
+	alert("${message}");
+}
+</script>
+</c:if>
 
 <section class="searchUserEmailForm-section">
 	<h2 class="sec-tit">코딩커뮤니티 계정찾기</h2>
@@ -16,7 +28,7 @@
 	
 	<div class="content-row-1">
 		<c:choose>
-			<c:when test="${userEmail == null}">
+			<c:when test="${userEmailList.isEmpty() || userEmailList == null }">
 				<form method="post" class="searchUserEmail">
 					<div>
 						<h3 class="form-tit">본인 이름</h3>
@@ -37,13 +49,19 @@
 			<c:otherwise>
 				<div>
 					<p>입력하신 정보와 일치하는 계정입니다.</p>
-					<input name="userEmail" type="hidden" value="${userEmail }"><br>
-					<b>${userEmail }</b>
+					<br>
+					<table>
+						<c:forEach var="userEmail" items="${userEmailList }" >
+							<tr>
+								<td><b>◎ ${userEmail }</b></td>
+							</tr>
+						</c:forEach>
+					</table>
 				</div>
 				<hr class="divider divider2">
 				<div>
 					<button type="button" onClick="location.href='${contextPath }/member/loginForm.do'">로그인</button>
-					<button type="button" onClick="location.href='${contextPath}/member/resetUserPwForm.do?userEmail=${userEmail }'">비밀번호 재설정</button>
+					<button type="button" onClick="location.href='${contextPath}/member/resetUserPwForm.do'">비밀번호 재설정</button>
 				</div>
 			</c:otherwise>
 		</c:choose>

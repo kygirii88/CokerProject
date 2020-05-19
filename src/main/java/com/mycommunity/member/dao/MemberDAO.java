@@ -1,5 +1,6 @@
 package com.mycommunity.member.dao;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.dao.DataAccessException;
@@ -21,7 +22,7 @@ public interface MemberDAO {
 	public int setLvlUp(MemberVO memberVO) throws Exception;
 	public void addProfileImage(Map imageMap);
 	public String getNoticeTitle() throws DataAccessException;
-	public String searchUserEmail(Map<String, Object> searchUserInfo)throws Exception;
+	public List<String> searchUserEmail(Map<String, Object> searchUserInfo)throws Exception;
 	public int resetPw(Map<String, Object> resetPwInfo)throws Exception;
 	
 }

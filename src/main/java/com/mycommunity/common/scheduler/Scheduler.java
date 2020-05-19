@@ -17,7 +17,7 @@ public class Scheduler {
 	@Autowired 
 	 AdminMemberService adminMemberService;
 	
-		@Scheduled(cron = "0 33 23 * * *" )
+		@Scheduled(cron = "0 52 0 * * *" )
 		public void autoUpdateEnable() throws Exception{
 			System.out.println("스케쥴러 시작");
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
