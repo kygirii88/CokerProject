@@ -161,7 +161,7 @@ public class AdminMemberControllerImpl extends BaseController implements AdminMe
 	@AdminOnly
 	@RequestMapping(value="/deleteMember.do", method= {RequestMethod.POST, RequestMethod.GET})
 	//삭제할 회원 아이디와 삭제하는 admin의 비밀번호를 RequestParam 애너테이션으로 받아옴
-	public ResponseEntity deleteMember(@RequestParam("userEmail") String userEmail, @RequestParam("adminId") String adminId, @RequestParam("adminPw") String adminPw, HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public ResponseEntity deleteMember(@RequestParam("userEmail") String userEmail, @RequestParam("nickname") String nickname, @RequestParam("adminId") String adminId, @RequestParam("adminPw") String adminPw, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		response.setContentType("text/html; charset=UTF-8");
 		request.setCharacterEncoding("utf-8");
 		System.out.println("삭제할 계정  : " + userEmail);
@@ -177,6 +177,13 @@ public class AdminMemberControllerImpl extends BaseController implements AdminMe
 			try {
 				message = "<script>";
 				message += "alert('관리자 비밀번호가 확인되었습니다.');";
+				//프로필 사진 디덱터리 삭제 메소드 호출
+				boolean delYn = deleteDirectory(new File(ARTICLE_IMAGE_REPO + "\\" + nickname + "\\"));
+				if(delYn) {
+					System.out.println("관리자 알림 : 프로필 사진 디렉터리 삭제 완료" );
+				} else {
+					System.out.println("관리자 알림 : 프로필 사진 디렉터리 삭제 실패, 디렉터리를 확인해주세요." );
+				}
 				//삭제할 회원의 Email을 deleteMeber로 보냄
 				adminMemberService.deleteMember(userEmail);
 				message +=" alert('선택하신 계정을 삭제하였습니다.');";
@@ -207,6 +214,36 @@ public class AdminMemberControllerImpl extends BaseController implements AdminMe
 		return resEntity;
 		
 	} 
+	//회원삭제시 프로필 사진 디렉터리 삭제 메소드
+	private boolean deleteDirectory(File deleteDir) throws Exception {
+		System.out.println("프로필 디렉터리 삭제 메소드 시작");
+		System.out.println("받아온 디렉터리 경로: " + deleteDir);
+		//디렉터리 경로 존재 확인
+		if(!deleteDir.exists()) {
+			return false;
+		}
+		
+		//삭제할 디렉터리 경로의 하위 파일 불러오기
+		File[] files = deleteDir.listFiles();
+		
+		
+		for (File file : files) {
+			if(file.isDirectory()) { //불러온 하위 파일이 디렉터리인 경우 재귀 함수로 deleteDirectory 메소드 호출, 하위 디렉터리의 하위 파일을 다시 확인
+				System.out.println("재귀함수 시작");
+				deleteDirectory(file);
+			} else {
+				System.out.println("파일 삭제 시작"); //불러온 하위 파일이 일반 파일인 경우 삭제
+				file.delete();
+			}
+		}
+		if(deleteDir.delete()) { //모든 하위 파일 삭제 후 본 디렉터리 삭제
+			System.out.println("디렉터리 삭제 성공");
+			return true;
+		} else {
+			System.out.println("디렉터리 삭제 실패");
+			return false;
+		}
+	}
 	
 	//계정상태변경(활성화/비활성화)
 	@Override

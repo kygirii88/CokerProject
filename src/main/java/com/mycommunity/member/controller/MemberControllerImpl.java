@@ -354,6 +354,13 @@ public class MemberControllerImpl extends BaseController implements MemberContro
 		responseHeaders.add("Content-Type", "text/html; charset=utf-8");
 		MemberVO memberInfo = (MemberVO) session.getAttribute("memberInfo");
 		if (passwordEncoder.matches(rawPw, userPw)) {
+			//프로필 사진 디덱터리 삭제 메소드 호출
+			boolean delYn = deleteDirectory(new File(ARTICLE_IMAGE_REPO + "\\" + memberInfo.getNickname() + "\\"));
+			if(delYn) {
+				System.out.println("관리자 알림 : 프로필 사진 디렉터리 삭제 완료" );
+			} else {
+				System.out.println("관리자 알림 : 프로필 사진 디렉터리 삭제 실패, 디렉터리를 확인해주세요." );
+			}
 			memberService.deleteMember(memberInfo);
 			session.invalidate();
 			message = "<script>";
@@ -369,6 +376,34 @@ public class MemberControllerImpl extends BaseController implements MemberContro
 		resEntity = new ResponseEntity(message, responseHeaders, HttpStatus.OK);
 		return resEntity;
 
+	}
+	//회원탈퇴시 프로필 사진 디렉터리 삭제 메소드
+	private boolean deleteDirectory(File deleteDir) throws Exception {
+		System.out.println("프로필 디렉터리 삭제 메소드 시작");
+		System.out.println("받아온 디렉터리 : " + deleteDir);
+		//디렉터리 경로 존재 확인
+		if(!deleteDir.exists()) {
+			return false;
+		}
+		//삭제할 디렉터리 경로의 하위 파일 불러오기
+		File[] files = deleteDir.listFiles();
+		
+		for (File file : files) {
+			if(file.isDirectory()) {
+				System.out.println("재귀함수 시작");//불러온 하위 파일이 디렉터리인 경우 재귀 함수로 deleteDirectory 메소드 호출, 하위 디렉터리의 하위 파일을 다시 확인
+				deleteDirectory(file);
+			} else {
+				System.out.println("파일 삭제 시작");//불러온 하위 파일이 일반 파일인 경우 삭제
+				file.delete();
+			}
+		}
+		if(deleteDir.delete()) { //모든 하위 파일 삭제 후 본 디렉터리 삭제
+			System.out.println("디렉터리 삭제 성공");
+			return true;
+		} else {
+			System.out.println("디렉터리 삭제 실패");
+			return false;
+		}
 	}
 
 	// 회원 탈퇴 비밀번호 확인

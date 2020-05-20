@@ -17,7 +17,7 @@ import com.mycommunity.member.vo.MemberVO;
 public interface AdminMemberController {
 	public ModelAndView memberDetail(HttpServletRequest request, HttpServletResponse response)throws Exception;
 	public ModelAndView modifyMemberInfo(MemberVO memberVO, HttpServletRequest request, HttpServletResponse response)throws Exception;
-	public ResponseEntity deleteMember(@RequestParam String userEmail, @RequestParam String adminId, @RequestParam String adminPw, HttpServletRequest request, HttpServletResponse response)throws Exception;
+	public ResponseEntity deleteMember(@RequestParam String userEmail, @RequestParam String nickName, @RequestParam String adminId, @RequestParam String adminPw, HttpServletRequest request, HttpServletResponse response)throws Exception;
 	public ModelAndView listMembers(@RequestParam Map<String, Object> searchMemberInfo, Integer page, Integer perPageNum, HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ResponseEntity enableMember(@RequestParam Map<String, String> enableInfoMap, HttpServletRequest request, HttpServletResponse response) throws Exception;
 	//계정 비밀번호 재설정 시 회원메일 인증
