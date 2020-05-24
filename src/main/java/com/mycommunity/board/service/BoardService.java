@@ -15,7 +15,7 @@ public interface BoardService {
 
 	public void addArticle(Map articleMap) throws Exception;
 
-	public void removeArticle(String boardTableName, String replyTableName, int boardNO);
+	public void removeArticle(String boardTableName, String replyTableName, String likesTableName, int boardNO);
 
 	public void modArticle(Map articleMap) throws Exception;
 	

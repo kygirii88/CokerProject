@@ -96,6 +96,10 @@
 	delete from ${replyTableName} where boardNO=#{boardNO}
 </delete>
 
+<delete id="removeLikes" parameterType="java.util.HashMap">
+	delete from ${likesTableName} where boardNO=#{boardNO}
+</delete>
+
 <update id="modArticle" parameterType="java.util.HashMap">
 	update ${tableName} set
 	<if test="tableName == 'c_board_freetalk_board'">

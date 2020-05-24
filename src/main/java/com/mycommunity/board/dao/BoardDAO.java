@@ -16,7 +16,7 @@ public interface BoardDAO {
 	public List<ReplyVO> selectAllReplies(String tableName, int boardNO) throws DataAccessException;
 	
 	public void addArticle(Map articleMap) throws DataAccessException;
-	public void removeArticle(String boardTableName, String replyTableName, int boardNO) throws DataAccessException;
+	public void removeArticle(String boardTableName, String replyTableName, String likesTableName, int boardNO) throws DataAccessException;
 	public void modArticle(Map articleMap) throws DataAccessException;
 	
 	//��� �߰�

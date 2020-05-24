@@ -76,13 +76,17 @@ public class BoardDAOImpl implements BoardDAO{
 	}
 
 	@Override
-	public void removeArticle(String boardTableName, String replyTableName, int boardNO) throws DataAccessException {
+	public void removeArticle(String boardTableName, String replyTableName, String likesTableName, int boardNO) throws DataAccessException {
 		Map map1 = new HashMap();
 		Map map2 = new HashMap();
+		Map map3 = new HashMap();
 		map1.put("boardTableName", boardTableName);
 		map2.put("replyTableName", replyTableName);
+		map3.put("likesTableName", likesTableName);
 		map1.put("boardNO", boardNO);
 		map2.put("boardNO", boardNO);
+		map3.put("boardNO", boardNO);
+		sqlSession.delete("mapper.board.removeLikes",map3);
 		sqlSession.delete("mapper.board.removeReply",map2);
 		sqlSession.delete("mapper.board.removeArticle",map1);
 	}

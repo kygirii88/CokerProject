@@ -62,8 +62,8 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public void removeArticle(String boardTableName, String replyTableName, int boardNO) {
-		boardDAO.removeArticle(boardTableName, replyTableName, boardNO);
+	public void removeArticle(String boardTableName, String replyTableName, String likesTableName, int boardNO) {
+		boardDAO.removeArticle(boardTableName, replyTableName, likesTableName, boardNO);
 	}
 
 	@Override

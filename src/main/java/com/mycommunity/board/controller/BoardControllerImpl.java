@@ -168,10 +168,11 @@ public class BoardControllerImpl implements BoardController{
 		HttpHeaders responseHeaders = new HttpHeaders();
 		responseHeaders.add("Content-Type", "text/html;charset=utf-8");
 		
+		String likesTableName = getLikesTableName(category);
 		String boardTableName = getBoardTableName(category);
 		String replyTableName = getReplyTableName(category);
 		try {
-			boardService.removeArticle(boardTableName, replyTableName, boardNO);
+			boardService.removeArticle(boardTableName, replyTableName, likesTableName, boardNO);
 			if(isAdmin == null || isAdmin == 0) {				
 				message = "<script>alert('글을 삭제했습니다.'); location.href='"+request.getContextPath()+"/board/viewBoard.do?category="+category+"';</script>";
 			}else {
